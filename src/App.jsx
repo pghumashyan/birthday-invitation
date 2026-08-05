@@ -621,7 +621,7 @@ export default function App() {
               {/* Not the shared LABEL: this one sits alone at the top of the
                   page and needs a little more presence than the section
                   labels further down. */}
-              <p className="text-[13px] uppercase tracking-[0.3em] text-gold">{TEXT.eyebrow}</p>
+              <p className="text-base uppercase tracking-[0.3em] text-gold">{TEXT.eyebrow}</p>
               <Ornament className="mt-4 mb-7" />
 
               {/* One complete heading for screen readers, the page outline and
@@ -646,7 +646,7 @@ export default function App() {
                   </LaurelEmblem>
                 </div>
 
-                <p className="mt-2 font-serif text-xl leading-snug text-wine sm:text-2xl">
+                <p className="mt-2 font-serif text-2xl leading-snug text-wine sm:text-3xl">
                   {TEXT.titleBottom}
                 </p>
               </div>

@@ -43,8 +43,8 @@ const TEXT = {
   titleTop: 'Ցոլակ Խաչատրյանի',
   titleAge: '30',
   // Dative, not nominative: it reads as one phrase with the «Հրավեր» label
-  // directly above it — "invitation TO the 30th".
-  titleBottom: 'ամյակին',
+  // directly above it — "invitation TO the celebration of the 30th".
+  titleBottom: 'ամյակի տոնակատարությանը',
 
 
   greetingTitle: 'Հարգելի՛ բարեկամներ և ընկերներ',
@@ -634,9 +634,11 @@ export default function App() {
               <div aria-hidden="true">
                 <p className="font-serif text-2xl text-ink sm:text-3xl">{TEXT.titleTop}</p>
 
-                {/* Negative margins close the dead space baked into the
-                    emblem's viewBox, so the three parts read as one phrase. */}
-                <div className="-mt-2 flex justify-center">
+                {/* A small, even gap on both sides of the emblem. The wreath's
+                    viewBox already carries ~10px of its own padding, so this
+                    only needs a nudge — enough to separate the words from the
+                    ring without reopening the big hole it started with. */}
+                <div className="mt-2 flex justify-center">
                   <LaurelEmblem>
                     <span className="bg-gradient-to-b from-gold-soft via-gold to-wine bg-clip-text font-serif text-7xl leading-none text-transparent sm:text-8xl">
                       {TEXT.titleAge}
@@ -644,7 +646,7 @@ export default function App() {
                   </LaurelEmblem>
                 </div>
 
-                <p className="-mt-3 font-serif text-2xl text-wine sm:text-3xl">
+                <p className="mt-2 font-serif text-xl leading-snug text-wine sm:text-2xl">
                   {TEXT.titleBottom}
                 </p>
               </div>

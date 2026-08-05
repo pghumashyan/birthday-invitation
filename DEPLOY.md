@@ -120,10 +120,9 @@ The workflow in [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) b
 publishes on every push to `main`. Watch it under the repo's **Actions** tab — first run takes
 ~2 minutes.
 
-At this point the site is already live at `https://<your-username>.github.io/birthday/` —
-except the assets will 404, because `vite.config.js` is set up for a root domain. If you want to
-test before buying the domain, temporarily set `base: '/birthday/'` in
-[`vite.config.js`](vite.config.js), push, and check. Set it back to `'/'` before step 3c.
+The site goes live at `https://pghumashyan.github.io/birthday-invitation/` and works there
+straight away. `vite.config.js` uses `base: './'` (relative asset paths), so the same build also
+works once a custom domain points at the root — no config change needed when you switch.
 
 ### 3c. Buy and connect the domain
 

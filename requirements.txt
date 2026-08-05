@@ -1,0 +1,60 @@
+PROJECT TITLE: Modern Birthday Invitation Web App
+PURPOSE: Create a mobile-first, modern RSVP invitation web application (similar to Partiful/Evite UI).
+
+================================================================================
+1. TECH STACK & DEPLOYMENT TARGETS
+================================================================================
+- Frontend Framework: React (using Vite + JavaScript)
+- Styling: Tailwind CSS (for modern UI, gradient cards, crisp typography)
+- Database / Backend: Google Sheets API / Sheety API / Google Forms Webhook 
+  *(Note: GitHub Pages only hosts static frontend files; API calls will post directly from client to Google Sheets/Forms)*
+- Mapping Integration: Yandex Navigator & Google Maps deep links
+- Hosting: GitHub Pages (Static hosting compatibility required)
+
+================================================================================
+2. PAGE LAYOUT & UI REQUIREMENTS
+================================================================================
+- Theme & Aesthetic: Modern, high-energy party aesthetic (glassmorphism/gradients).
+- Header Section:
+  * Hero photo upload placeholder for "Ցոլակ Խաչատրյան".
+  * Main Title: "Ցոլակ Խաչատրյանի 56-ամյակը"
+- Event Details Card:
+  * Date & Time: Սեպտեմբերի 28, 17:30 (September 28, 5:30 PM)
+  * Location: Florence Restaurant, Yerevan
+- Interactive Navigation Buttons:
+  * "Open in Yandex Navigator" -> opens `yandexnavi://build_route_on_map?lat_to=40.1983&lon_to=44.4900`
+  * "Open in Google Maps" -> opens `https://maps.google.com/?q=Florence+Restaurant+Yerevan`
+
+================================================================================
+3. RSVP FORM & DATA REQUIREMENTS (STRICT TYPE VALIDATION)
+================================================================================
+The form must collect clear, structured numerical data to calculate total headcounts automatically.
+
+Fields Required:
+1. Full Name (Text input)
+2. Attendance Status (Radio buttons / Toggle buttons):
+   - "Գալիս եմ" (Going)
+   - "Չեմ կարող գալ" (Not Going)
+3. Guest Count / Headcount (Numeric Input - strictly active ONLY if status is "Going"):
+   - Label: "Քանի՞ հոգով եք գալու (ներառյալ Ձեզ)"
+   - Type: `<input type="number" min="1" step="1" />`
+   - Validation: Strict integer validation only (reject strings/text to ensure spreadsheet cleanliness).
+
+================================================================================
+4. DATA STORAGE INTEGRATION (GOOGLE SHEETS)
+================================================================================
+- Send payload via a POST `fetch()` request directly to a Google Sheets Web App endpoint / Google Form endpoint upon form submission.
+- Payload Schema:
+  {
+    "timestamp": "ISO Date String",
+    "guestName": "String",
+    "attending": "Boolean/String",
+    "totalCount": "Number"
+  }
+
+================================================================================
+5. DELIVERABLES REQUESTED FROM CLAUDE
+================================================================================
+1. Provide a single-file, production-ready React component (`App.jsx`) using Tailwind CSS.
+2. Provide simple Google Apps Script code to append incoming fetch data straight into a Google Sheet.
+3. Provide step-by-step instructions to deploy the final build folder to GitHub Pages.

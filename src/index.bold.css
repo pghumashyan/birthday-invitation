@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Noto Sans Armenian", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Noto Serif Armenian", ui-serif, Georgia, serif;
+
+  /* Near-black stage, white cards, one electric accent. High contrast on
+     purpose — this reads as a party, not a wedding. */
+  --color-night: #0b0b0e;
+  --color-night-soft: #15151b;
+  --color-card: #ffffff;
+  --color-ink: #0e0e12;
+  --color-muted: #6f7280;
+  --color-muted-dark: #9a9aa4;
+  --color-accent: #7c9ee8;
+  --color-accent-deep: #4f74c9;
+  --color-line: #e6e6ea;
+  --color-alert: #e0685c;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-night);
+  color: var(--color-card);
+  font-family: var(--font-sans);
+  /* Armenian ascenders and descenders are tall; anything tighter collides. */
+  line-height: 1.6;
+}
+
+/* Brushed-metal fill for the big numerals. */
+.chrome {
+  background-image: linear-gradient(
+    170deg,
+    #ffffff 0%,
+    #e8ecf5 18%,
+    #9aa3b4 38%,
+    #ffffff 52%,
+    #c3cad8 66%,
+    #7e8798 82%,
+    #eef1f7 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Outlined display numerals. */
+.outlined {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--color-card);
+}
+
+@media (min-width: 640px) {
+  .outlined {
+    -webkit-text-stroke-width: 3px;
+  }
+}
+
+/* Faint grain so large black fills don't look flat. */
+.grain {
+  background-image: radial-gradient(currentColor 1px, transparent 1px);
+  background-size: 26px 26px;
+  opacity: 0.06;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 90s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up,
+  .animate-spin-slow {
+    animation: none;
+  }
+}

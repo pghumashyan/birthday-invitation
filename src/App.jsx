@@ -632,7 +632,7 @@ export default function App() {
               </h1>
 
               <div aria-hidden="true">
-                <p className="font-serif text-2xl text-ink sm:text-3xl">{TEXT.titleTop}</p>
+                <p className="font-serif text-2xl text-wine sm:text-3xl">{TEXT.titleTop}</p>
 
                 {/* A small, even gap on both sides of the emblem. The wreath's
                     viewBox already carries ~10px of its own padding, so this

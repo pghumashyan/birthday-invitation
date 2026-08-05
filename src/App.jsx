@@ -399,6 +399,26 @@ function RsvpForm() {
       return
     }
 
+    // Apps Script answers in 3-10 seconds, so awaiting it means the guest
+    // stares at a spinner. sendBeacon hands the request to the browser, which
+    // delivers it in the background — it returns immediately and survives the
+    // tab being closed. A Blob typed text/plain keeps it a "simple request",
+    // so no CORS preflight (which Apps Script cannot answer).
+    //
+    // The trade: we never learn whether the row was written. Acceptable here
+    // because the fallback below could not read the response either.
+    try {
+      const blob = new Blob([JSON.stringify(payload)], { type: 'text/plain;charset=UTF-8' })
+      if (navigator.sendBeacon && navigator.sendBeacon(CONFIG.endpoint, blob)) {
+        setResult(payload)
+        setStatus('success')
+        return
+      }
+    } catch {
+      // Beacon unavailable or refused — fall through to the awaited request,
+      // which is slower but reports real success and failure.
+    }
+
     try {
       // Content-Type MUST stay text/plain. Using application/json makes the
       // browser send a CORS preflight OPTIONS request, and Apps Script web apps

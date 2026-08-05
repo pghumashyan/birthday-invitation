@@ -128,7 +128,7 @@ works once a custom domain points at the root — no config change needed when y
 
 Buy a domain from [Porkbun](https://porkbun.com) or [Namecheap](https://namecheap.com) — a `.com`
 runs ~$10/yr, and `.xyz` / `.click` are often ~$1–5 for the first year. Something like
-`tsolak30.com`.
+`invitation-tsolak30.click`.
 
 **In your registrar's DNS settings**, add five records:
 
@@ -138,16 +138,10 @@ runs ~$10/yr, and `.xyz` / `.click` are often ~$1–5 for the first year. Someth
 | A | `@` | `185.199.109.153` |
 | A | `@` | `185.199.110.153` |
 | A | `@` | `185.199.111.153` |
-| CNAME | `www` | `<your-username>.github.io` |
+| CNAME | `www` | `pghumashyan.github.io` |
 
-**In this project**, rename `public/CNAME.example` to `public/CNAME` and put your bare domain in
-it (no `https://`, no `www`):
-
-```bash
-mv public/CNAME.example public/CNAME
-echo "tsolak30.com" > public/CNAME
-git add -A && git commit -m "Add custom domain" && git push
-```
+`public/CNAME` already contains `invitation-tsolak30.click`, so the build publishes it
+automatically. Nothing to do here.
 
 **In GitHub:** Settings → Pages → Custom domain → type the domain → Save. Once the check passes,
 tick **Enforce HTTPS**.
@@ -161,7 +155,7 @@ When you send the link on WhatsApp or Telegram, the preview card comes from the 
 [`index.html`](index.html). One still points at `example.com`. Replace it with your real domain:
 
 ```html
-<meta property="og:url" content="https://tsolak30.com/" />
+<meta property="og:url" content="https://invitation-tsolak30.click/" />
 ```
 
 It must be an **absolute** URL — relative paths don't work for link previews.
@@ -171,7 +165,7 @@ there are no photographs to show. If you later decide you want a picture on the 
 of the restaurant, say, rather than of him — drop it in `public/` and add:
 
 ```html
-<meta property="og:image" content="https://tsolak30.com/preview.jpg" />
+<meta property="og:image" content="https://invitation-tsolak30.click/preview.jpg" />
 ```
 
 …and change `twitter:card` back to `summary_large_image`.

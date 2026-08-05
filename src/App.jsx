@@ -7,7 +7,8 @@ const CONFIG = {
   // Paste the Apps Script web app URL here (see DEPLOY.md, step 1).
   // Leave it empty to run in demo mode: nothing is sent, the payload is logged
   // to the browser console so you can test the whole flow first.
-  endpoint: '',
+  endpoint:
+    'https://script.google.com/macros/s/AKfycbxZ0jUdZvNGIZTyqhW2Fmj6yZJIt9wkerSYo3zkno4yl-hUtaJxenN9WGW5Wxu4Wfz4bA/exec',
 
   // Event moment in Yerevan time (+04:00). Drives the countdown.
   eventDate: '2026-09-28T17:30:00+04:00',

@@ -42,7 +42,9 @@ const TEXT = {
   eyebrow: 'Հրավեր',
   titleTop: 'Ցոլակ Խաչատրյանի',
   titleAge: '30',
-  titleBottom: 'ամյակը',
+  // Dative, not nominative: it reads as one phrase with the «Հրավեր» label
+  // directly above it — "invitation TO the 30th".
+  titleBottom: 'ամյակին',
 
 
   greetingTitle: 'Հարգելի՛ բարեկամներ և ընկերներ',

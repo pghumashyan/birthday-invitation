@@ -84,6 +84,7 @@ const TEXT = {
   countMaxError: `Առավելագույնը ${CONFIG.maxGuests} հոգի`,
   submit: 'Ուղարկել',
   submitting: 'Ուղարկվում է…',
+  submittingSlow: 'Կարող է տևել մի քանի վայրկյան',
   successGoing: 'Շնորհակալություն',
   successGoingSub: 'Ձեր պատասխանը գրանցված է։ Սպասում ենք Ձեզ։',
   successNotGoing: 'Ափսոս, կկարոտենք Ձեզ',
@@ -355,6 +356,19 @@ function RsvpForm() {
   // errors clear the moment they are fixed.
   const [submitted, setSubmitted] = useState(false)
 
+  // Apps Script is slow to answer — a cold start plus its redirect hop measured
+  // ~6-9s from the live site. Without a word of explanation that reads as a
+  // frozen page, and people start tapping the button again.
+  const [slow, setSlow] = useState(false)
+  useEffect(() => {
+    if (status !== 'sending') {
+      setSlow(false)
+      return
+    }
+    const id = setTimeout(() => setSlow(true), 2500)
+    return () => clearTimeout(id)
+  }, [status])
+
   const nameError = submitted || touched.name ? nameErrorFor(name) : ''
   const countError = attending === true && (submitted || touched.count) ? countErrorFor(count) : ''
   const attendingError = submitted && attending === null ? TEXT.statusError : ''
@@ -536,13 +550,20 @@ function RsvpForm() {
         </div>
       )}
 
-      <button
-        type="submit"
-        disabled={status === 'sending'}
-        className="w-full rounded-full border border-wine bg-wine py-4 text-[11px] uppercase tracking-[0.24em] text-paper transition hover:bg-wine-deep disabled:cursor-not-allowed disabled:opacity-50"
-      >
-        {status === 'sending' ? TEXT.submitting : status === 'error' ? TEXT.retry : TEXT.submit}
-      </button>
+      <div>
+        <button
+          type="submit"
+          disabled={status === 'sending'}
+          className="w-full rounded-full border border-wine bg-wine py-4 text-[11px] uppercase tracking-[0.24em] text-paper transition hover:bg-wine-deep disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          {status === 'sending' ? TEXT.submitting : status === 'error' ? TEXT.retry : TEXT.submit}
+        </button>
+        {slow && (
+          <p className="animate-fade-up mt-3 text-center text-xs text-muted">
+            {TEXT.submittingSlow}
+          </p>
+        )}
+      </div>
     </form>
   )
 }

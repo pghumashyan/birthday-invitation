@@ -29,6 +29,8 @@ const CONFIG = {
   // 1200px+ on the short side. If it is missing the cover falls back to a
   // monogram panel rather than a broken image.
   photo: '/tsolak.jpg',
+  // Where to zoom into the portrait: 'x% y%'. Point it at the face.
+  photoFocus: '66% 26%',
   monogram: 'ՑԽ',
   firstName: 'ՑՈԼԱԿ',
 
@@ -195,7 +197,11 @@ function CoverPortrait() {
               src={CONFIG.photo}
               alt={CONFIG.honoreeName}
               onError={() => setFailed(true)}
-              className="h-full w-full object-cover"
+              // The subject sits right of centre with another guest's shoulder
+              // in the bottom-left. Zooming toward him crops that out; adjust
+              // CONFIG.photoFocus if you swap the picture.
+              style={{ transformOrigin: CONFIG.photoFocus }}
+              className="h-full w-full scale-[1.45] object-cover"
             />
           )}
         </div>

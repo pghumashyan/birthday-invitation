@@ -53,3 +53,10 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v5
+        with:
+          # Default is 600000 (10 min), after which the action CANCELS the
+          # deployment. Pages here consistently needs longer — runs were being
+          # reported as failures while the content actually published moments
+          # later. 30 minutes, and a slower poll to keep the log readable.
+          timeout: 1800000
+          reporting_interval: 15000

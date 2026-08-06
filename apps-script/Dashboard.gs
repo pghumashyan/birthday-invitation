@@ -25,7 +25,7 @@
 
 var CONFIG = {
   sheetId: 'PASTE_YOUR_SHEET_ID_HERE',
-  eventDate: '2026-09-28T17:30:00+04:00',
+  eventDate: '2026-09-28T17:00:00+04:00',
   goingLabel: 'Գալիս է',
   title: 'Ցոլակ Խաչատրյանի 30-ամյակը',
   venue: 'Florence Restaurant',

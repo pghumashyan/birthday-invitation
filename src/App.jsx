@@ -11,7 +11,7 @@ const CONFIG = {
     'https://script.google.com/macros/s/AKfycbxZ0jUdZvNGIZTyqhW2Fmj6yZJIt9wkerSYo3zkno4yl-hUtaJxenN9WGW5Wxu4Wfz4bA/exec',
 
   // Event moment in Yerevan time (+04:00). Drives the countdown.
-  eventDate: '2026-09-28T17:30:00+04:00',
+  eventDate: '2026-09-28T17:00:00+04:00',
 
   // Venue coordinates — used for the embedded map and the Yandex route link.
   // These come from the restaurant's Yandex Maps listing. requirements.txt gave
@@ -59,7 +59,7 @@ const TEXT = {
   dateDay: '28',
   dateMonth: 'Սեպտեմբերի',
   dateWeekday: 'երկուշաբթի',
-  timeValue: '17:30',
+  timeValue: '17:00',
 
   locationTitle: 'Վայրը',
   openIn: 'Բացել հավելվածում',

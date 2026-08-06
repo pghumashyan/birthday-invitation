@@ -22,7 +22,7 @@ read top to bottom, one action at the end.
 |---|---|
 | Occasion | 30th birthday |
 | Honoree | Ցոլակ Խաչատրյան (monogram: **ՑԽ**) |
-| Date | Monday **28 September 2026**, 17:30 (Yerevan, UTC+4) |
+| Date | Monday **28 September 2026**, 17:00 (Yerevan, UTC+4) |
 | Venue | **Florence Restaurant**, Բարբյուսի փող. 64/2, Երևան |
 | Coordinates | 40.194364, 44.481653 — verified against the Yandex listing |
 | RSVP deadline | **11 September 2026** |
@@ -193,7 +193,7 @@ Armenian, with English gloss. These live in the `TEXT` block.
 - `Հարգելի՛ բարեկամներ և ընկերներ` — Dear relatives and friends
 - `Եթե ստացել եք այս հրավերը, ուրեմն Դուք իմ ընտանիքի համար կարևոր հյուր եք։` — If you have received this invitation, you are an important guest to my family.
 - `Հրավիրում եմ Ձեզ ինձ հետ կիսելու տարվա ամենաջերմ երեկոն՝ Ցոլակ Խաչատրյանի 30-ամյակի տոնակատարությունը։` — I invite you to share with me the warmest evening of the year: the celebration of Tsolak Khachatryan's 30th. (Host's own wording.)
-- `28` / `Սեպտեմբերի` / `երկուշաբթի · 17:30`
+- `28` / `Սեպտեմբերի` / `երկուշաբթի · 17:00`
 
 **Location**
 - `Վայրը` — The place

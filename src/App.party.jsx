@@ -10,7 +10,7 @@ const CONFIG = {
   endpoint: '',
 
   // Event moment in Yerevan time (+04:00). Drives the countdown.
-  eventDate: '2026-09-28T17:30:00+04:00',
+  eventDate: '2026-09-28T17:00:00+04:00',
 
   // Venue coordinates — used to build the Yandex Navigator route link.
   lat: 40.1983,
@@ -42,7 +42,7 @@ const TEXT = {
   // Kept short so it stays on one line at 390px. The weekday rides along with
   // the time on the second line instead.
   dateValue: 'Սեպտեմբերի 28',
-  timeValue: 'երկուշաբթի · 17:30',
+  timeValue: 'երկուշաբթի · 17:00',
   placeLabel: 'Վայրը',
   countdownOver: 'Տոնը սկսվեց 🎉',
   units: ['օր', 'ժամ', 'րոպե', 'վայրկյան'],

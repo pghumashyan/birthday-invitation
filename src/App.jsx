@@ -691,7 +691,7 @@ export default function App() {
                   <CoverPortrait />
                 </div>
 
-                <p className="mt-6 font-display text-3xl font-normal tracking-[0.02em] text-wine sm:text-4xl">
+                <p className="mt-6 font-display text-4xl font-normal tracking-[0.03em] text-wine sm:text-5xl">
                   {TEXT.partyLabel}
                 </p>
               </div>

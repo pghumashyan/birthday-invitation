@@ -39,6 +39,18 @@ body {
   line-height: 1.6;
 }
 
+/* Outlined display numeral for the cover — hollow gold, like the reference. */
+.outlined-gold {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--color-gold);
+}
+
+@media (min-width: 640px) {
+  .outlined-gold {
+    -webkit-text-stroke-width: 3px;
+  }
+}
+
 /* Faint dotted texture so large fills read as paper rather than flat colour. */
 .texture {
   background-image: radial-gradient(currentColor 1px, transparent 1px);

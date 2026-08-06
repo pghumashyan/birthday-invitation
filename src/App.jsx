@@ -25,9 +25,12 @@ const CONFIG = {
   venueAddress: 'Բարբյուսի փող. 64/2',
   googleMapsQuery: 'Florence Restaurant, Barbusse 64/2, Yerevan',
 
-  // No photographs anywhere on this page, by request. The hero is a laurel
-  // emblem instead, and the monogram carries the personal note.
+  // Cover portrait. Drop the file at public/tsolak.jpg — portrait orientation,
+  // 1200px+ on the short side. If it is missing the cover falls back to a
+  // monogram panel rather than a broken image.
+  photo: '/tsolak.jpg',
   monogram: 'ՑԽ',
+  firstName: 'ՑՈԼԱԿ',
 
 
   honoreeName: 'Ցոլակ Խաչատրյան',
@@ -42,6 +45,7 @@ const TEXT = {
   eyebrow: 'Հրավեր',
   titleTop: 'Ցոլակ Խաչատրյանի',
   titleAge: '30',
+  partyLabel: 'BIRTHDAY PARTY',
   // Dative, not nominative: it reads as one phrase with the «Հրավեր» label
   // directly above it — "invitation TO the celebration of the 30th".
   titleBottom: 'ամյակի տոնակատարությանը',
@@ -164,6 +168,40 @@ function laurelLeaves(radius, rx, ry, count, tilt) {
       />
     )
   })
+}
+
+/** Cover portrait in a gold frame, with a monogram panel if the file is absent. */
+function CoverPortrait() {
+  const [failed, setFailed] = useState(false)
+
+  return (
+    <div className="relative w-44 shrink-0 sm:w-52">
+      <Corner className="-top-2 -left-2" />
+      <Corner className="-top-2 -right-2 rotate-90" />
+      <Corner className="-bottom-2 -right-2 rotate-180" />
+      <Corner className="-bottom-2 -left-2 -rotate-90" />
+
+      <div className="border-2 border-gold/50 bg-blush-deep p-1.5">
+        <div className="aspect-3/4 overflow-hidden bg-gradient-to-b from-blush to-blush-deep">
+          {failed ? (
+            <div className="flex h-full w-full flex-col items-center justify-center gap-2">
+              <span className="font-serif text-4xl text-gold">{CONFIG.monogram}</span>
+              <span className="text-[9px] uppercase tracking-[0.2em] text-muted">
+                public/tsolak.jpg
+              </span>
+            </div>
+          ) : (
+            <img
+              src={CONFIG.photo}
+              alt={CONFIG.honoreeName}
+              onError={() => setFailed(true)}
+              className="h-full w-full object-cover"
+            />
+          )}
+        </div>
+      </div>
+    </div>
+  )
 }
 
 function LaurelEmblem({ children }) {
@@ -625,29 +663,30 @@ export default function App() {
               <Ornament className="mt-4 mb-7" />
 
               {/* One complete heading for screen readers, the page outline and
-                  search results. The visual version below splits the same words
-                  around the emblem, so it is marked decorative. */}
+                  search results. The visual composition below is decorative. */}
               <h1 className="sr-only">
                 {TEXT.titleTop} {TEXT.titleAge}-{TEXT.titleBottom}
               </h1>
 
-              <div aria-hidden="true">
-                <p className="font-serif text-2xl text-wine sm:text-3xl">{TEXT.titleTop}</p>
+              <div aria-hidden="true" className="relative mt-2">
+                {/* Hollow numeral, overlapping the portrait's top-left corner */}
+                <span className="outlined-gold absolute -top-3 left-0 z-10 font-serif text-7xl leading-none sm:text-8xl">
+                  {TEXT.titleAge}
+                </span>
 
-                {/* A small, even gap on both sides of the emblem. The wreath's
-                    viewBox already carries ~10px of its own padding, so this
-                    only needs a nudge — enough to separate the words from the
-                    ring without reopening the big hole it started with. */}
-                <div className="mt-2 flex justify-center">
-                  <LaurelEmblem>
-                    <span className="bg-gradient-to-b from-gold-soft via-gold to-wine bg-clip-text font-serif text-7xl leading-none text-transparent sm:text-8xl">
-                      {TEXT.titleAge}
-                    </span>
-                  </LaurelEmblem>
+                <div className="flex items-center justify-center gap-3 sm:gap-4">
+                  <span
+                    className="text-sm font-semibold uppercase tracking-[0.3em] text-wine"
+                    style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
+                  >
+                    {CONFIG.firstName}
+                  </span>
+
+                  <CoverPortrait />
                 </div>
 
-                <p className="mt-2 font-serif text-2xl leading-snug text-wine sm:text-3xl">
-                  {TEXT.titleBottom}
+                <p className="mt-6 text-3xl font-bold tracking-tight text-wine sm:text-4xl">
+                  {TEXT.partyLabel}
                 </p>
               </div>
 

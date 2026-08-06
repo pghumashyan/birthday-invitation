@@ -15,19 +15,32 @@ concurrency:
   group: pages
   cancel-in-progress: false
 
+# Action versions matter here. GitHub deprecated Node 20 on its runners and
+# now forces older actions onto Node 24, under which upload-pages-artifact@v3
+# reported success but produced no artifact at all — deploy-pages then waited
+# for something that never arrived and aborted at its 10-minute timeout.
+# Keep these current; a silent empty artifact is the symptom if they drift.
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: 22
           cache: npm
       - run: npm ci
       - run: npm run build
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+
+      # Fail loudly here rather than letting an empty artifact stall the deploy.
+      - name: Verify build output
+        run: |
+          test -f dist/index.html || { echo "dist/index.html missing"; exit 1; }
+          test -f dist/tsolak.jpg || { echo "dist/tsolak.jpg missing"; exit 1; }
+          echo "dist contents:"; ls -la dist
+
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: dist
 
@@ -39,4 +52,4 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

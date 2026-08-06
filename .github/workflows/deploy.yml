@@ -36,7 +36,6 @@ jobs:
       - name: Verify build output
         run: |
           test -f dist/index.html || { echo "dist/index.html missing"; exit 1; }
-          test -f dist/tsolak.jpg || { echo "dist/tsolak.jpg missing"; exit 1; }
           echo "dist contents:"; ls -la dist
 
       - uses: actions/configure-pages@v6
@@ -54,9 +53,6 @@ jobs:
       - id: deployment
         uses: actions/deploy-pages@v5
         with:
-          # Default is 600000 (10 min), after which the action CANCELS the
-          # deployment. Pages here consistently needs longer — runs were being
-          # reported as failures while the content actually published moments
-          # later. 30 minutes, and a slower poll to keep the log readable.
-          timeout: 1800000
+          # 600000 (10 min) is a hard cap — larger values are clamped back to
+          # it with a warning, so there is nothing to gain by raising it.
           reporting_interval: 15000

@@ -5,7 +5,7 @@
   --font-serif: "Noto Serif Armenian", ui-serif, Georgia, serif;
   /* Latin display face for "BIRTHDAY PARTY" — the only non-Armenian text
      on the page, so it is free to use a face with no Armenian glyphs. */
-  --font-display: "Cinzel", ui-serif, Georgia, serif;
+  --font-display: "Cinzel Decorative", ui-serif, Georgia, serif;
 
   /* Warm celebratory palette: paper and blush, a deep wine block for contrast,
      antique gold for every accent. */

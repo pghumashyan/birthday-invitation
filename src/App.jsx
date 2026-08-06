@@ -177,7 +177,7 @@ function CoverPortrait() {
   const [failed, setFailed] = useState(false)
 
   return (
-    <div className="relative w-44 shrink-0 sm:w-52">
+    <div className="relative w-52 shrink-0 sm:w-64">
       <Corner className="-top-2 -left-2" />
       <Corner className="-top-2 -right-2 rotate-90" />
       <Corner className="-bottom-2 -right-2 rotate-180" />
@@ -680,9 +680,9 @@ export default function App() {
                   {TEXT.titleAge}
                 </span>
 
-                <div className="flex items-center justify-center gap-3 sm:gap-4">
+                <div className="flex items-center justify-center gap-2 sm:gap-3">
                   <span
-                    className="text-sm font-semibold uppercase tracking-[0.3em] text-wine"
+                    className="text-xs font-semibold uppercase tracking-[0.25em] text-wine"
                     style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
                   >
                     {CONFIG.firstName}
@@ -723,7 +723,7 @@ export default function App() {
               {TEXT.dateDay}
             </p>
             <p className={`${LABEL} mt-4 text-wine`}>{TEXT.dateMonth}</p>
-            <p className={`${LABEL} mt-3 text-gold`}>
+            <p className="mt-3 text-lg font-semibold tracking-wide text-wine sm:text-xl">
               {TEXT.dateWeekday} · {TEXT.timeValue}
             </p>
           </div>

@@ -1,0 +1,22 @@
+# Netlify auto-detects the stack from files in the repo root. A file named
+# requirements.txt makes it assume Python and run pip against it — which is why
+# the first build died on "PROJECT TITLE: Modern Birthday Invitation Web App".
+# That file is the original brief; it now lives at BRIEF.txt.
+#
+# Declaring the build here removes the guesswork entirely.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+  # Nothing Python here; keep the detector out of it.
+  PYTHON_VERSION = ""
+
+# Single page, no client-side routing, but this keeps deep links working if a
+# guest ever lands on a path that isn't the root.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

@@ -177,7 +177,7 @@ function CoverPortrait() {
   const [failed, setFailed] = useState(false)
 
   return (
-    <div className="relative w-52 shrink-0 sm:w-64">
+    <div className="relative w-full">
       <Corner className="-top-2 -left-2" />
       <Corner className="-top-2 -right-2 rotate-90" />
       <Corner className="-bottom-2 -right-2 rotate-180" />
@@ -680,9 +680,9 @@ export default function App() {
                   {TEXT.titleAge}
                 </span>
 
-                <div className="flex items-center justify-center gap-2 sm:gap-3">
+                <div className="flex items-center gap-2 sm:gap-3">
                   <span
-                    className="text-xs font-semibold uppercase tracking-[0.25em] text-wine"
+                    className="shrink-0 text-xs font-semibold uppercase tracking-[0.25em] text-wine"
                     style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
                   >
                     {CONFIG.firstName}

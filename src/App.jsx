@@ -682,7 +682,7 @@ export default function App() {
 
                 <div className="flex items-center gap-2 sm:gap-3">
                   <span
-                    className="shrink-0 text-xs font-semibold uppercase tracking-[0.25em] text-wine"
+                    className="shrink-0 text-base font-semibold uppercase tracking-[0.25em] text-wine"
                     style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
                   >
                     {CONFIG.firstName}
